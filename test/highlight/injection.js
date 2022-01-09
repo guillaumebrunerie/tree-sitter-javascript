@@ -1,5 +1,5 @@
 eval(js `var foo`)
-// <- function
-//    ^ function
+// <- function.call
+//    ^ function.call
 //        ^ keyword
 //            ^ variable

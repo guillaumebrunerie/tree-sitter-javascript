@@ -1,23 +1,23 @@
-; Scopes
-;-------
+;; ; Scopes
+;; ;-------
 
-[
-  (statement_block)
-  (function)
-  (arrow_function)
-  (function_declaration)
-  (method_definition)
-] @local.scope
+;; [
+;;   (statement_block)
+;;   (function)
+;;   (arrow_function)
+;;   (function_declaration)
+;;   (method_definition)
+;; ] @local.scope
 
-; Definitions
-;------------
+;; ; Definitions
+;; ;------------
 
-(pattern/identifier)@local.definition
+;; (pattern/identifier)@local.definition
 
-(variable_declarator
-  name: (identifier) @local.definition)
+;; (variable_declarator
+;;   name: (identifier) @local.definition)
 
-; References
-;------------
+;; ; References
+;; ;------------
 
-(identifier) @local.reference
+;; (identifier) @local.reference

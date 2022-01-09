@@ -9,4 +9,4 @@ try {} catch (e) {} finally {}
 
 throw e
 // <- keyword
-//    ^ variable
+//    ^ variable.call

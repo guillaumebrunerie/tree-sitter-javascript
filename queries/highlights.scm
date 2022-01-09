@@ -12,9 +12,11 @@
 ((identifier) @constructor
  (#match? @constructor "^[A-Z]"))
 
+((property_identifier) @constructor
+ (#match? @constructor "^[A-Z]"))
+
 ((identifier) @variable.builtin
- (#match? @variable.builtin "^(arguments|module|console|window|document)$")
- (#is-not? local))
+ (#match? @variable.builtin "^(arguments|module|console|window|document)$"))
 
 ((identifier) @function.builtin
  (#eq? @function.builtin "require")
@@ -51,16 +53,33 @@
 ;--------------------------
 
 (call_expression
-  function: (identifier) @function)
+  function: (identifier) @function.call)
 
 (call_expression
   function: (member_expression
-    property: (property_identifier) @function.method))
+    property: (property_identifier) @function.method.call))
+
+; Definitions
+;------------
+
+(array_pattern (identifier) @variable)
+(variable_declarator . (identifier) @variable)
+(import_clause (identifier) @variable)
+(object_pattern
+ [
+  (pair_pattern value: (identifier) @variable)
+  (shorthand_property_identifier_pattern) @variable
+  (rest_pattern (identifier) @variable)
+  ])
 
 ; Variables
 ;----------
 
-(identifier) @variable
+([
+    (identifier)
+    (shorthand_property_identifier)
+    (shorthand_property_identifier_pattern)
+ ] @variable.call)
 
 ; Properties
 ;-----------
@@ -82,6 +101,11 @@
 
 (comment) @comment
 
+(template_substitution
+ "${" @punctuation.special
+ (_) @embedded
+ "}" @punctuation.special)
+
 [
   (string)
   (template_string)
@@ -92,10 +116,6 @@
 
 ; Tokens
 ;-------
-
-(template_substitution
-  "${" @punctuation.special
-  "}" @punctuation.special) @embedded
 
 [
   ";"

@@ -42,7 +42,7 @@ foo(function callback() {
 
 
 c();
-// <- function
+// <- function.call
 
 module.e();
-//     ^ function.method
+//     ^ function.method.call

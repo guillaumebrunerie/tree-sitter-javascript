@@ -13,28 +13,28 @@ module.exports = function(one, two) {
 
   if (something()) {
     let module = null, one = 1;
-    //  ^ variable
+    //  ^ variable.builtin
     //                 ^ variable
 
     console.log(module, one, two);
     // ^ variable.builtin
-    //            ^ variable
-    //                   ^ variable
-    //                        ^ variable.parameter
+    //            ^ variable.builtin
+    //                   ^ variable.call
+    //                        ^ variable.call
   }
 
   console.log(module, one, two);
   // ^ variable.builtin
   //            ^ variable.builtin
-  //                   ^ variable.parameter
-  //                        ^ variable.parameter
+  //                   ^ variable.call
+  //                        ^ variable.call
 };
 
 console.log(module, one, two);
 // ^ variable.builtin
 //            ^ variable.builtin
-//                   ^ variable
-//                        ^ variable
+//                   ^ variable.call
+//                        ^ variable.call
 
 function one({two: three}, [four]) {
   //          ^ property
@@ -42,7 +42,7 @@ function one({two: three}, [four]) {
   //                         ^ variable.parameter
 
   console.log(two, three, four)
-  //           ^ variable
-  //                ^ variable.parameter
-  //                       ^ variable.parameter
+  //           ^ variable.call
+  //                ^ variable.call
+  //                       ^ variable.call
 }
