@@ -1,19 +1,19 @@
 ; Special identifiers
 ;--------------------
 
-([
-    (identifier)
-    (shorthand_property_identifier)
-    (shorthand_property_identifier_pattern)
- ] @constant
- (#match? @constant "^[A-Z_][A-Z\\d_]+$"))
+;; ([
+;;     (identifier)
+;;     (shorthand_property_identifier)
+;;     (shorthand_property_identifier_pattern)
+;;  ] @constant
+;;  (#match? @constant "^[A-Z_][A-Z\\d_]+$"))
 
 
-((identifier) @constructor
- (#match? @constructor "^[A-Z]"))
+;; ((identifier) @constructor
+;;  (#match? @constructor "^[A-Z]"))
 
-((property_identifier) @constructor
- (#match? @constructor "^[A-Z]"))
+;; ((property_identifier) @constructor
+;;  (#match? @constructor "^[A-Z]"))
 
 ((identifier) @variable.builtin
  (#match? @variable.builtin "^(arguments|module|console|window|document)$"))
@@ -38,8 +38,10 @@
 
 (assignment_expression
   left: (member_expression
-    property: (property_identifier) @function.method)
-  right: [(function) (arrow_function)])
+    property: (property_identifier) @variable))
+
+(assignment_expression
+  left: (identifier) @variable)
 
 (variable_declarator
   name: (identifier) @function
