@@ -67,6 +67,7 @@
 (array_pattern (identifier) @variable)
 (variable_declarator . (identifier) @variable)
 (import_clause (identifier) @variable)
+(import_specifier (identifier) @variable)
 (object_pattern
  [
   (pair_pattern value: (identifier) @variable)
