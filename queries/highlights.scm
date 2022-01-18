@@ -40,8 +40,22 @@
   left: (member_expression
     property: (property_identifier) @variable))
 
+(augmented_assignment_expression
+  left: (member_expression
+    property: (property_identifier) @variable))
+
+(update_expression
+  (member_expression
+    property: (property_identifier) @variable))
+
 (assignment_expression
-  left: (identifier) @variable)
+  (identifier) @variable)
+
+(augmented_assignment_expression
+  (identifier) @variable)
+
+(update_expression
+  (identifier) @variable)
 
 (variable_declarator
   name: (identifier) @function
