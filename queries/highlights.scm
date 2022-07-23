@@ -1,22 +1,23 @@
 ; Special identifiers
 ;--------------------
 
-;; ([
-;;     (identifier)
-;;     (shorthand_property_identifier)
-;;     (shorthand_property_identifier_pattern)
-;;  ] @constant
-;;  (#match? @constant "^[A-Z_][A-Z\\d_]+$"))
+([
+    (identifier)
+    (shorthand_property_identifier)
+    (shorthand_property_identifier_pattern)
+ ] @constant
+ (#match? @constant "^[A-Z_][A-Z\\d_]+$"))
 
 
-;; ((identifier) @constructor
-;;  (#match? @constructor "^[A-Z]"))
+((identifier) @constructor
+ (#match? @constructor "^[A-Z]"))
 
-;; ((property_identifier) @constructor
-;;  (#match? @constructor "^[A-Z]"))
+((property_identifier) @constructor
+ (#match? @constructor "^[A-Z]"))
 
 ((identifier) @variable.builtin
- (#match? @variable.builtin "^(arguments|module|console|window|document)$"))
+ (#match? @variable.builtin "^(arguments|module|console|window|document)$")
+ (#is-not? local))
 
 ((identifier) @function.builtin
  (#eq? @function.builtin "require")
@@ -38,7 +39,12 @@
 
 (assignment_expression
   left: (member_expression
-    property: (property_identifier) @variable))
+    property: (property_identifier) @function.method)
+  right: [(function) (arrow_function)])
+
+(assignment_expression
+  left: (member_expression
+    property: (property_identifier) @property.definition))
 
 (augmented_assignment_expression
   left: (member_expression

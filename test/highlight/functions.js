@@ -11,7 +11,7 @@ var d = async () => {};
 //  ^ function
 
 module.e = 'e';
-//     ^ property
+//     ^ property.definition
 
 module.f = function() {};
 //     ^ function.method
@@ -42,7 +42,7 @@ foo(function callback() {
 
 
 c();
-// <- function.call
+// <- function
 
 module.e();
 //     ^ function.method.call
