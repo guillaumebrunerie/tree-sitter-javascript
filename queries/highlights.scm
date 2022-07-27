@@ -55,10 +55,10 @@
     property: (property_identifier) @variable))
 
 (assignment_expression
-  (identifier) @variable)
+  left: (identifier) @variable)
 
 (augmented_assignment_expression
-  (identifier) @variable)
+  left: (identifier) @variable)
 
 (update_expression
   (identifier) @variable)
@@ -87,7 +87,13 @@
 (array_pattern (identifier) @variable)
 (variable_declarator . (identifier) @variable)
 (import_clause (identifier) @variable)
-(import_specifier (identifier) @variable)
+(import_specifier
+  name: (identifier) @property
+  alias: (identifier) @variable)
+(import_specifier
+  name: (identifier) @variable
+  !alias)
+(namespace_import (identifier) @variable)
 (object_pattern
  [
   (pair_pattern value: (identifier) @variable)
