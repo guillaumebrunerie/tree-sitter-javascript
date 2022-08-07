@@ -551,7 +551,10 @@ module.exports = grammar({
     ),
 
     // Should not contain new lines and should not start or end with a space
-    jsx_text: $ => /[^{}<>\n ]([^{}<>\n]*[^{}<>\n ])?/,
+    jsx_text: $ => choice(
+      /[^{}<>\n ]([^{}<>\n]*[^{}<>\n ])?/,
+      /\/\/[^\n]*/,
+    ),
 
     jsx_expression: $ => seq(
       '{',

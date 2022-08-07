@@ -2342,8 +2342,17 @@
       ]
     },
     "jsx_text": {
-      "type": "PATTERN",
-      "value": "[^{}<>\\n ]([^{}<>\\n]*[^{}<>\\n ])?"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[^{}<>\\n ]([^{}<>\\n]*[^{}<>\\n ])?"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\/\\/[^\\n]*"
+        }
+      ]
     },
     "jsx_expression": {
       "type": "SEQ",
