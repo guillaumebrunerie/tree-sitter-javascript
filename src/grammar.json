@@ -4117,7 +4117,7 @@
           }
         },
         {
-          "type": "PREC_LEFT",
+          "type": "PREC_RIGHT",
           "value": "binary_exp",
           "content": {
             "type": "SEQ",
